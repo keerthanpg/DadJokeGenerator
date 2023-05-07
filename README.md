@@ -1,6 +1,6 @@
 # Dad Joke Generator
 
-This is code + flask app for finetuning RedPajama 3B model on a Kaggle dataset of 200000 dadjokes from Reddit.
+This is code + flask app for finetuning RedPajama 3B model on a Kaggle dataset of 200000 dadjokes from Reddit. The app runs inference on a checkpoint to generate a joke and then renders it in Joe Biden's voice.
 
 ## Download the dataset
 Download the dataset [here](https://www.kaggle.com/datasets/oktayozturk010/reddit-dad-jokes)
