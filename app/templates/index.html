@@ -64,15 +64,23 @@
 
 </head>
 <body>
-    <h1>PUN PAPA PRO</h1>
+    <h1>PUN PAPA BIDEN</h1>
     <!-- Define a button that triggers an AJAX request when clicked -->
     <button type="button" id="click-me-button" class="btn btn-primary">Hit Me!</button>
     <!-- Spinner element -->
     <div class="spinner" id="spinner"></div>
     <!-- Container to display the response text -->
     <div id="response-text"></div>
+    <!-- <button type="button" id="play-audio-button" class="btn btn-primary">Papa Biden Play!</button> -->
 
     <script>
+        function playAudio(url) {
+            // Create a new audio element
+            var audioElement = new Audio(url);
+
+            // Play the audio
+            audioElement.play();
+        }
         $(document).ready(function() {
             $('#click-me-button').click(function() {
                 // Show the spinner
@@ -87,8 +95,13 @@
                         $('#spinner').hide();
                         // Display the response text on the page
                         $('#response-text').text(response.message);
+                        playAudio(response.url)
                     }
                 });
+            });
+            $('#play-audio-button').click(function() {
+                // Play the audio
+                $('#audio-player')[0].play();
             });
         });
     
