@@ -1,0 +1,100 @@
+
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
+    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <style>
+        /* Set the background color of the entire page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f6fa; /* AliceBlue */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Style the title */
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the button */
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Style the response text container */
+        #response-text {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        /* Style the spinner */
+        .spinner {
+            margin-top: 20px;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            display: none; /* Initially hidden */
+        }
+
+        /* Animate the spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <h1>PUN PAPA PRO</h1>
+    <!-- Define a button that triggers an AJAX request when clicked -->
+    <button type="button" id="click-me-button" class="btn btn-primary">Hit Me!</button>
+    <!-- Spinner element -->
+    <div class="spinner" id="spinner"></div>
+    <!-- Container to display the response text -->
+    <div id="response-text"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#click-me-button').click(function() {
+                // Show the spinner
+                $('#spinner').show();
+                // Hide the response text
+                $('#response-text').text('');
+                $.ajax({
+                    url: '/handle_button_click',
+                    type: 'POST',
+                    success: function(response) {
+                        // Hide the spinner
+                        $('#spinner').hide();
+                        // Display the response text on the page
+                        $('#response-text').text(response.message);
+                    }
+                });
+            });
+        });
+    
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+</body>
+</html>
+
